@@ -1,0 +1,554 @@
+[
+    {
+        "color": "blue",
+        "cost": 1,
+        "tasks": []
+    },
+    {
+        "color": "yellow",
+        "cost": 4,
+        "tasks": [
+            ["yellow", "yellow", "yellow"],
+            ["red", "blue"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 3,
+        "tasks": [
+            ["blue", "red", "red"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 2,
+        "tasks": [
+            ["red", "red", "red", "red"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 6,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise"],
+            ["turquoise", "yellow"],
+            ["yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 2,
+        "tasks": [
+            ["yellow", "yellow", "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 2,
+        "tasks": [
+            ["yellow", "yellow", "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 5,
+        "tasks": [
+            ["blue", "blue"],
+            ["yellow"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 5,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["red", "red"],
+            ["yellow", "yellow"]
+            
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 6,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["red", "red"],
+            ["blue"]
+            
+        ]
+    },
+
+
+
+    {
+        "color": "turquoise",
+        "cost": 3,
+        "tasks": [
+            ["blue", "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 6,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["red", "red"],
+            ["yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 3,
+        "tasks": [
+            ["yellow"],
+            ["blue", "blue"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 1,
+        "tasks": [
+            []
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 5,
+        "tasks": [
+            ["red", "red", "red"],
+            ["red"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 4,
+        "tasks": [
+            ["yellow", "yellow", "yellow", "yellow"],
+            ["yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 3,
+        "tasks": [
+            ["turquoise"],
+            ["red", "red"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 5,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["red"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 5,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["blue", "blue"],
+            ["yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 5,
+        "tasks": [
+            ["red", "red"],
+            ["blue"]
+        ]
+    },
+
+
+    {
+        "color": "turquoise",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "yellow", "red", "blue"],
+            ["yellow", "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise"],
+            ["red", "red", "red"],
+            [ "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "red", "yellow"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "red"],
+            ["blue", "yellow"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 4,
+        "tasks": [
+            ["blue", "blue", "blue"],
+            ["yellow", "yellow", "yellow"],
+            ["turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 1,
+        "tasks": []
+    },
+    {
+        "color": "red",
+        "cost": 7,
+        "tasks": [
+            ["turquoise", "blue"],
+            ["turquoise", "yellow"],
+            ["blue", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 5,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise"],
+            ["turquoise"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise", "turquoise"],
+            ["turquoise", "turquoise"]
+        ]
+    },
+
+
+    {
+        "color": "turquoise",
+        "cost": 6,
+        "tasks": [
+            ["red", "red", "red"],
+            ["red", "blue"],
+            ["blue", "blue"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 3,
+        "tasks": [
+            ["red", "blue", "yellow"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 3,
+        "tasks": [
+            ["red", "turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 5,
+        "tasks": [
+            ["yellow", "yellow", "yellow"],
+            ["yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 2,
+        "tasks": [
+            ["blue", "blue", "blue", "blue"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 2,
+        "tasks": [
+            ["blue", "blue", "blue", "blue"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 5,
+        "tasks": [
+            ["red", "red"],
+            ["blue", "blue"],
+            ["yellow", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 4,
+        "tasks": [
+            ["red", "red", "red", "red"],
+            ["red", "red"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "yellow", "red", "blue"],
+            ["turquoise", "turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 6,
+        "tasks": [
+            ["yellow", "yellow", "yellow"],
+            ["red", "yellow"],
+            ["red", "red"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise"],
+            ["red", "red", "red"],
+            ["blue", "blue"]
+        ]
+    },
+
+
+    {
+        "color": "red",
+        "cost": 4,
+        "tasks": [
+            ["red", "red", "red"],
+            ["turquoise", "yellow"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 7,
+        "tasks": [
+            ["turquoise", "red"],
+            ["turquoise", "yellow"],
+            ["red", "yellow"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 7,
+        "tasks": [
+            ["red", "blue"],
+            ["red", "yellow"],
+            ["blue", "yellow"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "red"],
+            ["blue", "yellow"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 5,
+        "tasks": [
+            ["turquoise", "turquoise"],
+            ["red", "red"],
+            ["blue", "blue"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 6,
+        "tasks": [
+            ["blue", "blue", "blue"],
+            ["turquoise", "blue"],
+            ["turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "red", "blue"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 2,
+        "tasks": [
+            ["red", "red", "red", "red"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 5,
+        "tasks": [
+            ["yellow", "yellow"],
+            ["turquoise"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "yellow", "red", "blue"],
+            ["blue", "blue", "blue"]
+        ]
+    },
+
+
+    {
+        "color": "yellow",
+        "cost": 7,
+        "tasks": [
+            ["turquoise", "red"],
+            ["turquoise", "blue"],
+            ["red", "blue"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 2,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 3,
+        "tasks": [
+            ["red", "blue", "blue"]
+        ]
+    },
+    {
+        "color": "yellow",
+        "cost": 1,
+        "tasks": [
+            []
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 3,
+        "tasks": [
+            ["turquoise", "blue", "yellow"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 6,
+        "tasks": [
+            ["blue", "blue"],
+            ["yellow", "yellow"],
+            ["turquoise"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 2,
+        "tasks": [
+            ["blue", "blue", "blue", "blue"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 2,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "yellow"],
+            ["red", "blue"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 4,
+        "tasks": [
+            ["blue", "blue", "blue", "blue"],
+            ["blue", "blue"]
+        ]
+    },
+
+
+    {
+        "color": "turquoise",
+        "cost": 6,
+        "tasks": [
+            ["blue", "blue"],
+            ["yellow", "yellow"],
+            ["red"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "yellow"],
+            ["red", "blue"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 4,
+        "tasks": [
+            ["blue", "blue", "blue"],
+            ["yellow", "yellow", "yellow"],
+            ["red", "red"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 3,
+        "tasks": [
+            ["yellow", "turquoise", "turquoise"]
+        ]
+    },
+    {
+        "color": "red",
+        "cost": 5,
+        "tasks": [
+            ["blue", "blue", "blue"],
+            ["blue"]
+        ]
+    },
+    {
+        "color": "blue",
+        "cost": 4,
+        "tasks": [
+            ["blue", "blue", "blue"],
+            ["turquoise", "red"]
+        ]
+    },
+    {
+        "color": "turquoise",
+        "cost": 4,
+        "tasks": [
+            ["turquoise", "turquoise", "turquoise"],
+            ["blue", "yellow"]
+        ]
+    }
+]

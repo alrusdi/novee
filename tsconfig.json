@@ -22,7 +22,9 @@
         "esModuleInterop": true
     },
     "include": [
-        "./**/*.ts"
+        "./server/**/*.ts",
+        "./client/**/*.ts",
+        "./tests/**/*.ts"
     ],
     "exclude": [
         "node_modules/",

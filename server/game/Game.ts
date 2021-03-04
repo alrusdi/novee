@@ -1,4 +1,5 @@
 import { TileDealer } from '../tiles/TileDealer';
+import { randomId } from '../Utils';
 import { Player } from './Player';
 
 export class Game {
@@ -10,10 +11,9 @@ export class Game {
         public players: Array<Player>,
         public firstPlayer: Player
     ) {
-        this.id = Math.floor(Math.random() * Math.pow(16, 12)).toString(16);
+        this.id = randomId();
         this.dealer = new TileDealer();
 
-        this.firstPlayer.tiles.push(this.dealer.dealTile());
+        this.firstPlayer.tiles.push(this.dealer.deal());
     }
-
 }

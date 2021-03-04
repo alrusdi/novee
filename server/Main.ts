@@ -1,12 +1,15 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 dotenv.config();
 
-import bodyParser from "body-parser";
-import cookieSession from "cookie-session";
-import express from "express";
-import passport from "passport";
-import { setupPassport } from "./PassportSetup";
-import path from "path";
+import bodyParser from 'body-parser';
+import cookieSession from 'cookie-session';
+import express from 'express';
+import passport from 'passport';
+import { setupPassport } from './PassportSetup';
+import path from 'path';
+import { Dispatcher } from './api/Dispatcher';
+import { AccountManager } from './account/AccountManager';
+import { StorageManager } from './storage/StorageManager';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -23,12 +26,15 @@ app.use(cookieSession({
 app.use("/dist", express.static(baseDir + '/dist'));
 app.use("/assets", express.static(baseDir + '/assets'));
 
+const handleFile = (res: any, fileName: string = '/client/index.html') => {
+    res.sendFile(path.join(baseDir, fileName));
+}
 
 const isLoggedIn = (req: any, res: any, next: any) => {
     if (req.user) {
         next();
     } else {
-        res.status(401).send('You are not authorized to view this page. Consider <a href="/login">login</a>')
+        handleFile(res, '/client/anonymous.html');
     }
 }
 
@@ -38,8 +44,11 @@ app.use(passport.session());
 
 // Entry point for client application
 app.get('/', isLoggedIn, (_, res) => {
-    const indexFile = path.join(baseDir, '/client/index.html');
-    res.sendFile(indexFile);
+    handleFile(res, '/client/index.html');
+});
+
+app.get('/invite/*', isLoggedIn, (_, res) => {
+    handleFile(res, '/client/index.html');
 });
 
 // Auth Routes
@@ -59,11 +68,26 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
+app.get('/api/*', isLoggedIn, (req, res) => {
+    const accounId = (req.user || "").toString()
+    const resp = Dispatcher.handleGetRequest(accounId, req.url)
+    res.json(resp);
+});
+
+app.post('/api/*', isLoggedIn, (req, res) => {
+    const accounId = (req.user || "").toString()
+    const resp = Dispatcher.handlePostRequest(accounId, req.url, req.body)
+    res.json(resp);
+});
+
 // start the express server
 app.listen(port, async () => {
 
     // Add google auth credentials
     await setupPassport();
+    
+    StorageManager.init(process.env.STORAGE_CONNECTION_STRING || "");
+    AccountManager.loadAll();
 
     console.log(`server started at http://localhost:${ port }`);
 });

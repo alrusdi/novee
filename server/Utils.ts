@@ -4,3 +4,7 @@ export function shuffle(array: Array<any>) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+export function randomId() {
+    return Math.floor(Math.random() * Math.pow(16, 12)).toString(16);
+}

@@ -33,5 +33,4 @@ export class RedisStorage implements DataStorage {
             })
         });
     }
-
 }

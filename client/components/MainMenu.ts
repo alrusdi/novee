@@ -17,4 +17,4 @@ export const MainMenu = defineComponent({
         </ul>
       </div>
     `
-})
+});

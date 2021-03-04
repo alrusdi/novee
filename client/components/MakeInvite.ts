@@ -114,4 +114,4 @@ export const MakeInvite = defineComponent({
         </template>
     </div>
     `
-})
+});

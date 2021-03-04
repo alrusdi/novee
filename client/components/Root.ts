@@ -42,4 +42,4 @@ export const Root = defineComponent({
       </template>
     </div>
   `
-})
+});

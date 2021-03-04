@@ -47,7 +47,6 @@ export class InvitesApi extends BaseApi {
     }
 
     takeSeat(seatInfo: TakeSeat): ApiResponse {
-        console.log(seatInfo);
         const invite = InvitesManager.getInvite(seatInfo.inviteId);
 
         const seat = invite.takeSeat(seatInfo.seatId, this.accountId, seatInfo.color);

@@ -143,6 +143,4 @@ describe('Tile', function() {
         expect(target.getCountOfColor("red")).to.eq(3);
         expect(target.tasks[0].isComplete()).to.be.true;
     });
-
-
 });

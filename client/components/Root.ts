@@ -24,7 +24,7 @@ export const Root = defineComponent({
   },
   'template': `
     <div :class="'container ' + 'topmost-'+screen">
-      <div class="top-navigation">
+      <div class="top-navigation" v-if="screen!=='main-menu'">
         <ul class="navigation-items">
           <li class="navigation-item">
             <a href="/">Main menu</a>

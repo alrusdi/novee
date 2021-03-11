@@ -60,7 +60,7 @@ app.get('/failed', (_, res) => res.send('You are Failed to log in!'))
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
     (req: any, res) => {
-        // Successful authentication, redirect to the home page.
+        // Successful authentication
         let redirectTo = '/';
         if (req.session.returnTo)
         {
@@ -76,6 +76,8 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
+
+// API routes
 app.get('/api/*', isLoggedIn, (req, res) => {
     const accounId = (req.user || "").toString()
     const resp = Dispatcher.handleGetRequest(accounId, req.url)
@@ -88,7 +90,7 @@ app.post('/api/*', isLoggedIn, (req, res) => {
     res.json(resp);
 });
 
-// start the express server
+// Start the express server
 app.listen(port, async () => {
 
     // Add google auth credentials

@@ -1,0 +1,81 @@
+.tile {
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid gray;
+    width: 127px;
+    height: 127px;
+    border-radius: 20px;
+    padding: 5px 0 0 5px;
+    background: green;
+  }
+  
+  .tile-red {
+    background: #c4041c;
+  }
+  
+  .tile-green {
+    background: #00b855;
+  }
+  
+  .tile-blue {
+    background: #2a00c7;
+  }
+  
+  .tile-turquoise {
+    background: #2a00c7;
+  }
+  
+  
+  .tile-pos-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      border: 3px solid gray;
+      width: 48px;
+      height: 48px;
+      border-radius: 30px;
+      margin: 5px 0 0 5px;
+  }
+  
+  .tile-type-task {
+    padding: 5px 0 0 0px;
+    height: 45px;
+    background: #ffffffbf;
+  }
+  
+  .tile-cost {
+    font-family: Helvetica;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffffb3;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    text-align: left;
+    padding: 11px 0 0 16px;
+  }
+  
+  .tile-task {
+      width: 18px;
+      height: 19px;
+      background: url(http://127.0.0.1:8080/assets/img/circles.png);
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 auto;
+  }
+  
+  .tile-task--yellow {
+    background-position: 18px 0;
+  }
+  
+  .tile-task--red {
+    background-position: 18px 0;
+  }
+  
+  .tile-task--blue {
+    background-position: 38px 0;
+  }
+  
+  .tile-task--turquoise {
+    background-position: 58px 0;
+  }

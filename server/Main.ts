@@ -34,6 +34,9 @@ const isLoggedIn = (req: any, res: any, next: any) => {
     if (req.user) {
         next();
     } else {
+        if (req.originalUrl.includes('/invite/')) {
+            req.session.returnTo = req.originalUrl;
+        };
         handleFile(res, '/client/anonymous.html');
     }
 }
@@ -56,9 +59,14 @@ app.get('/login', passport.authenticate('google', { scope: ['profile', 'email'] 
 app.get('/failed', (_, res) => res.send('You are Failed to log in!'))
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
-    (_, res) => {
+    (req: any, res) => {
         // Successful authentication, redirect to the home page.
-        res.redirect('/');
+        let redirectTo = '/';
+        if (req.session.returnTo)
+        {
+            redirectTo = req.session.returnTo;
+        }
+        res.redirect(redirectTo);
     }
 );
 

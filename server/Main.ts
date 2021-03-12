@@ -54,6 +54,10 @@ app.get('/invite/*', isLoggedIn, (_, res) => {
     handleFile(res, '/client/index.html');
 });
 
+app.get('/game/*', isLoggedIn, (_, res) => {
+    handleFile(res, '/client/index.html');
+});
+
 // Auth Routes
 app.get('/login', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/failed', (_, res) => res.send('You are Failed to log in!'))

@@ -1,5 +1,6 @@
 
 import { ErrorApi } from './ErrorApi';
+import { GamesApi } from './GamesApi';
 import { ApiData, ApiResponse } from './Interfaces';
 import { InvitesApi } from './InvitesApi';
 
@@ -34,6 +35,20 @@ export class Dispatcher {
                     instance: instance,
                     method: instance.getInvite,
                     args: [urlParts[2]]
+                }
+            }
+        }
+
+        if (apiNamespace === 'games') {
+            const instance = new GamesApi();
+
+            if (apiMethod === 'create') {
+                if (urlParts.length === 3 && urlParts[2] === 'solo') {
+                    return {
+                        instance: instance,
+                        method: instance.createSoloGame,
+                        args: []
+                    }
                 }
             }
         }

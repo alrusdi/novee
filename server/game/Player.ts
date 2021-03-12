@@ -1,4 +1,5 @@
 import { Tile } from '../tiles/Tile';
+import { Account } from '../account/Account';
 
 export enum PlayerColor {
     Green = 'green',
@@ -15,6 +16,8 @@ export const ALL_PLAYER_COLORS = [
     PlayerColor.Orange,
     PlayerColor.Violet
 ]
+
+export const MAX_ACTIVE_TILES = 21;
 
 export class Player {
     public tiles: Array<Tile> = [];

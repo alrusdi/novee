@@ -56,6 +56,11 @@ ul {
 
 .menu-footer {
     text-align: center;
+    margin-left: -15px;
+}
+
+.menu-footer a {
+    margin-left: 15px;
 }
 
 .top-navigation {

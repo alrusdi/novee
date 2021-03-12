@@ -38,3 +38,32 @@
 .button--disabled .button-label {
     cursor: wait !important;
 }
+
+.button-square {
+    background: url(/assets/img/square_button_green.png) no-repeat;
+    height: 65px;
+    width: 68px;
+    display: inline-block;
+    padding: 14px 0 0 0;
+    cursor: pointer;
+}
+
+.button-square:hover {
+    background: url(/assets/img/square_button_orange.png) no-repeat;
+}
+
+.button-square .button-label {
+    width: 30px;
+    height: 30px;
+    margin: 6px 0 0 18px;
+}
+
+.button-square--github .button-label {
+    background: url(/assets/img/icons/icon-github.png) no-repeat;
+    width: 36px;
+    margin: 6px 0 0 15px;
+}
+
+.button-square--settings .button-label {
+    background: url(/assets/img/icons/icon-settings.png) no-repeat;
+}

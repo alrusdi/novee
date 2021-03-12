@@ -15,8 +15,9 @@ export const MainMenu = defineComponent({
           <Button page="rules">Rules</Button>
           <Button link="/logout" color="red">Logout</Button>
         </div>
-        <div class="menu-footer" title="Sources of the game on GitHub">
-          <a href="https://github.com/alrusdi/novee"><img src="/assets/img/github.png"></a>
+        <div class="menu-footer">
+          <Button type="square github" link="https://github.com/alrusdi/novee" />
+          <Button type="square settings" page="settings" />
         </div>
       </div>
     `

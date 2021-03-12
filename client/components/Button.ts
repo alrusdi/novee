@@ -2,13 +2,19 @@ import { defineComponent } from 'vue';
 import { NavigationMixing } from '../mixins/NavigationMixin';
 
 export const Button = defineComponent({
-    props: ['color', 'isDisabled', 'onClick', 'link', 'page'],
+    props: ['color', 'isDisabled', 'onClick', 'link', 'page', 'type'],
     mixins: [
         NavigationMixing
     ],
     methods: {
         getCssClass() {
             const classes = ['button'];
+            if (this.type) {
+                const parts = this.type.split(' ');
+                classes[0] = 'button-' + parts[0];
+                classes.push(classes[0] + '--' + parts[1]);
+            }
+
             if (this.isDisabled) {
                 classes.push('button--disabled');
             } else {
@@ -30,7 +36,7 @@ export const Button = defineComponent({
     },
     'template': `
     <a :href="link || '#'" :class="getCssClass()" v-on:click.prevent="handleClick()">
-        <div class="button-label"><slot>Ok</slot></div>
+        <div class="button-label"><slot></slot></div>
     </a>
     `
 });

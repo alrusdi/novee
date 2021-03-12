@@ -1,7 +1,11 @@
 import { defineComponent } from 'vue';
+import { NavigationMixing } from '../mixins/NavigationMixin';
 
 export const Button = defineComponent({
-    props: ['color', 'isDisabled', 'onClick', 'link'],
+    props: ['color', 'isDisabled', 'onClick', 'link', 'page'],
+    mixins: [
+        NavigationMixing
+    ],
     methods: {
         getCssClass() {
             const classes = ['button'];
@@ -15,6 +19,9 @@ export const Button = defineComponent({
         handleClick() {
             if (this.onClick) {
                 return this.onClick();
+            }
+            if (this.page) {
+                return this.goto(this.page);
             }
             if (this.link) {
                 window.location.href = this.link;

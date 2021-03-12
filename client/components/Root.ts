@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue';
+import { TopMenu } from './TopMenu';
 import { MainMenu } from './MainMenu';
 import { MakeInvite } from './MakeInvite';
 import { StartSolo } from './StartSolo';
@@ -12,6 +13,7 @@ export const Root = defineComponent({
     }
   },
   components: {
+    TopMenu,
     MainMenu,
     MakeInvite,
     StartSolo,
@@ -31,16 +33,9 @@ export const Root = defineComponent({
   },
   'template': `
     <div :class="'container ' + 'topmost-'+screen">
-      <div class="top-navigation" v-if="screen!=='main-menu'">
-        <ul class="navigation-items">
-          <li class="navigation-item">
-            <a href="/">Main menu</a>
-          </li>
-          <li class="navigation-item navigation-item--logout">
-            <a href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
+      <template v-if="screen!=='main-menu'">
+        <TopMenu />
+      </template>
       <template v-if="screen==='main-menu'">
         <MainMenu />
       </template>

@@ -14,12 +14,12 @@ export const StartSolo = defineComponent({
     mounted() {
         fetch('/api/games/create/solo')
             .then((response) => response.json())
-            .then((res) => this.onGameReady(res.data.gameId))
+            .then((res) => this.onGameReady(res.data.playerId))
             .catch((_) => alert('Cant create game'));
     },
     methods: {
-        onGameReady(gameId: string) {
-            this.gameURL = '/game/' + gameId;
+        onGameReady(playerId: string) {
+            this.gameURL = '/game/' + playerId;
             this.isLoading = false;
         }
     },

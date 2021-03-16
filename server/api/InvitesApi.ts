@@ -1,7 +1,7 @@
 import { AccountManager } from '../account/AccountManager';
 import { Seat } from '../game/Invite';
 import { InvitesManager } from '../game/InvitesManager';
-import { PlayerColor } from '../game/Player';
+import { PlayerColor } from '../game/PlayerColor';
 import { BaseApi } from './BaseApi';
 import { ApiResponse } from './Interfaces';
 

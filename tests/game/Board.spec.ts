@@ -5,12 +5,12 @@ import { TileDealer } from '../../server/tiles/TileDealer';
 import { wait } from '../Utils';
 
 function makeBoard(): Board {
-    const dealer = new TileDealer();
+    const dealer = TileDealer.fromFile();
     const playerPositions = [
         new PlayerPosition("1"),
         new PlayerPosition("2")
     ];
-    const board = new Board(dealer, playerPositions);
+    const board = Board.newBoard(dealer, playerPositions);
     return board
 }
 
@@ -51,19 +51,14 @@ describe('Board', function() {
 
     it('moves availability marker when tile is taken', function() {
         const board = makeBoard();
-        board.getTile(2);
+        expect(board.availabilityMarkerPosition).to.eq(0);
+        board.takeTile((board as any).tiles[2].id);
         expect(board.availabilityMarkerPosition).to.eq(2);
     });
 
     it('disallows to take a tile from position too far from the availability marker', function() {
         const board = makeBoard();
-        expect(() => board.getTile(3)).to.throw();
-    });
-
-    it('disallows to take a tile from empty position', function() {
-        const board = makeBoard();
-        board.getTile(1)
-        expect(() => board.getTile(1)).to.throw();
+        expect(board.takeTile((board as any).tiles[3].id)).to.be.undefined;
     });
 
     it('disallows to refresh tiles if there are a lot of tiles', function() {
@@ -71,11 +66,10 @@ describe('Board', function() {
         expect(board.refreshTiles()).to.be.false;
     });
 
-
     it('refreshes tiles', function() {
         const board = makeBoard();
-        for (let i = 1; i < 11; i++) {
-            board.getTile(i);
+        for (let i = 0; i < 10; i++) {
+            board.takeTile((board as any).tiles[i].id);
         }
         expect(board.getAvailableTiles().length).to.eq(2);
 

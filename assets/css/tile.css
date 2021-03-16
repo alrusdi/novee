@@ -1,0 +1,142 @@
+.tile {
+  display: inline-block;
+  vertical-align: top;
+  width: 77px;
+  height: 77px;
+  border-radius: 10px;
+  padding: 0;
+  background: green;
+  white-space: normal;
+  margin: 0 0 1px 0;
+}
+
+.tile-tasks {
+  padding: 1px 0 0 1px;
+}
+
+.tile--red {
+  background: #c4041c;
+  border: 2px solid #8c0012;
+}
+
+.tile--yellow {
+  background: #e6d261;
+  border: 1px solid #b0a14b;
+}
+
+.tile--blue {
+  background: #4343FF;
+  border: 1px solid #3131c6
+}
+
+.tile--turquoise {
+  background: #70e259;
+  border: 1px solid #479139
+}
+
+.tile-pos-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 28px;
+  height: 25px;
+  border-radius: 30px;
+  margin: 4px 0 0 4px;
+  padding: 3px 0 0 0;
+}
+
+.tile--turquoise .tile-pos-wrapper {
+  border: 2px solid #479139
+}
+
+.tile--red .tile-pos-wrapper {
+  border: 2px solid #8c0012;
+}
+
+.tile--blue .tile-pos-wrapper {
+  border: 2px solid #3131c6;
+}
+
+.tile--yellow .tile-pos-wrapper {
+  border: 2px solid #b0a14b;
+}
+
+.tile-type-task {
+  background: #ffffffbf;
+  line-height: 11px;
+}
+
+.tile-cost {
+  font-family: arial;
+  font-size: 25px;
+  font-weight: bold;
+  color: #0000008a;
+  width: 28px;
+  height: 25px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  margin: -3px 0 0 0;
+}
+
+.tile-req {
+  width: 11px;
+  height: 11px;
+  background: url(/assets/img/circles_mini.png);
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+}
+
+.tile-req--yellow {
+  background-position: 50px 0;
+}
+
+.tile-req--red {
+  background-position: 10px 0;
+}
+
+.tile-req--blue {
+  background-position: 23px 0;
+}
+
+.tile-req--turquoise {
+  background-position: 37px 0;
+}
+
+.tile-task--2 .tile-req--0 {
+  margin: 8px 0 0 0;
+}
+
+.tile-task--1 .tile-req--0 {
+  margin: 5px 0 0 -1px;
+}
+
+.tile-placeholder {
+  display: inline-block;
+  vertical-align: top;
+  width: 78px;
+  height: 78px;
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 0 1px 0;
+}
+
+.tile-placeholder-content--target {
+  background: url(/assets/img/crosshair.png) no-repeat;
+  width: 42px;
+  height: 42px;
+  margin: 16px 0 0 17px;
+  filter: opacity(0.7);
+  cursor: pointer;
+}
+
+.tile-activated {
+  font-size: 19px;
+  color: green;
+  line-height: 25px;
+}
+
+.tile-activated--orange {
+  background: orange;
+}

@@ -7,6 +7,7 @@ html, body {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background: #060606;
 }
 
 a, a:hover, a:visited {
@@ -16,11 +17,6 @@ a, a:hover, a:visited {
 
 ul {
     list-style: none;
-}
-
-#app {
-    background: #060606;
-    height: 100%;
 }
 
 .topmost-main-menu {
@@ -76,7 +72,6 @@ ul {
     display: inline-block;
     width: 695px;
     height: 100px;
-    background: url(top_menu_frame.png) no-repeat;
     margin: 0 0 0 -15px;
 }
 
@@ -98,6 +93,7 @@ ul {
     width: 25px;
     height: 25px;
     margin: 15px 0 0 -13px;
+    filter: drop-shadow(0 0 2px #1A1A1A);
 }
 
 .navigation-item--home:before {

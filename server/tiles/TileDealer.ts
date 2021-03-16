@@ -1,18 +1,40 @@
 import { Tile } from './Tile';
 import tileConfigs from '../../data/tiles.json'
 import { shuffle } from '../Utils';
-import { TileConfig } from './TileConfig';
 
 
 export class TileDealer {
     private tiles: Array<Tile> = [];
     private discardedTiles: Array<Tile> = [];
 
-    constructor() {
-        for (let config of tileConfigs) {
-            this.tiles.push(Tile.fromConfig(config as TileConfig));
+    private constructor() {}
+
+    static fromFile(): TileDealer {
+        const tileDealer = new TileDealer();
+        for (let def of tileConfigs) {
+            const tile = Tile.fromDefinition(def as any);
+            tileDealer.tiles.push(tile);
         }
-        shuffle(this.tiles);
+        shuffle(tileDealer.tiles);
+        return tileDealer;
+    }
+
+    static deserialize(serializedData: string): TileDealer {
+        const data = JSON.parse(serializedData);
+
+        const dealer = new TileDealer();
+        dealer.tiles = data.tileIds.map((tId: string) => Tile.fromDefinition(tId));
+        dealer.discardedTiles = data.discardedTileIds.map((tId: string) => Tile.fromDefinition(tId));
+
+        return dealer;
+    }
+
+    public serialize(): string {
+        const data = {
+            tileIds: this.tiles.map(t => t.id),
+            discardedTileIds: this.discardedTiles.map(t => t.id)
+        }
+        return JSON.stringify(data);
     }
 
     public getRemainingTilesCount() {

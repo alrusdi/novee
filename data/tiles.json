@@ -1,555 +1,69 @@
 [
-    {
-
-        "color": "blue",
-        "cost": 1,
-        "tasks": []
-    },
-    {
-        "color": "yellow",
-        "cost": 4,
-        "tasks": [
-            ["yellow", "yellow", "yellow"],
-            ["red", "blue"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 3,
-        "tasks": [
-            ["blue", "red", "red"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 2,
-        "tasks": [
-            ["red", "red", "red", "red"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 6,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise"],
-            ["turquoise", "yellow"],
-            ["yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 2,
-        "tasks": [
-            ["yellow", "yellow", "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 2,
-        "tasks": [
-            ["yellow", "yellow", "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 5,
-        "tasks": [
-            ["blue", "blue"],
-            ["yellow"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 5,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["red", "red"],
-            ["yellow", "yellow"]
-            
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 6,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["red", "red"],
-            ["blue"]
-            
-        ]
-    },
-
-
-
-    {
-        "color": "turquoise",
-        "cost": 3,
-        "tasks": [
-            ["blue", "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 6,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["red", "red"],
-            ["yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 3,
-        "tasks": [
-            ["yellow"],
-            ["blue", "blue"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 1,
-        "tasks": [
-            []
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 5,
-        "tasks": [
-            ["red", "red", "red"],
-            ["red"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 4,
-        "tasks": [
-            ["yellow", "yellow", "yellow", "yellow"],
-            ["yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 3,
-        "tasks": [
-            ["turquoise"],
-            ["red", "red"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 5,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["red"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 5,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["blue", "blue"],
-            ["yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 5,
-        "tasks": [
-            ["red", "red"],
-            ["blue"]
-        ]
-    },
-
-
-    {
-        "color": "turquoise",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "yellow", "red", "blue"],
-            ["yellow", "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise"],
-            ["red", "red", "red"],
-            [ "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "red", "yellow"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "red"],
-            ["blue", "yellow"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 4,
-        "tasks": [
-            ["blue", "blue", "blue"],
-            ["yellow", "yellow", "yellow"],
-            ["turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 1,
-        "tasks": []
-    },
-    {
-        "color": "red",
-        "cost": 7,
-        "tasks": [
-            ["turquoise", "blue"],
-            ["turquoise", "yellow"],
-            ["blue", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 5,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise"],
-            ["turquoise"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise", "turquoise"],
-            ["turquoise", "turquoise"]
-        ]
-    },
-
-
-    {
-        "color": "turquoise",
-        "cost": 6,
-        "tasks": [
-            ["red", "red", "red"],
-            ["red", "blue"],
-            ["blue", "blue"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 3,
-        "tasks": [
-            ["red", "blue", "yellow"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 3,
-        "tasks": [
-            ["red", "turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 5,
-        "tasks": [
-            ["yellow", "yellow", "yellow"],
-            ["yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 2,
-        "tasks": [
-            ["blue", "blue", "blue", "blue"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 2,
-        "tasks": [
-            ["blue", "blue", "blue", "blue"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 5,
-        "tasks": [
-            ["red", "red"],
-            ["blue", "blue"],
-            ["yellow", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 4,
-        "tasks": [
-            ["red", "red", "red", "red"],
-            ["red", "red"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "yellow", "red", "blue"],
-            ["turquoise", "turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 6,
-        "tasks": [
-            ["yellow", "yellow", "yellow"],
-            ["red", "yellow"],
-            ["red", "red"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise"],
-            ["red", "red", "red"],
-            ["blue", "blue"]
-        ]
-    },
-
-
-    {
-        "color": "red",
-        "cost": 4,
-        "tasks": [
-            ["red", "red", "red"],
-            ["turquoise", "yellow"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 7,
-        "tasks": [
-            ["turquoise", "red"],
-            ["turquoise", "yellow"],
-            ["red", "yellow"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 7,
-        "tasks": [
-            ["red", "blue"],
-            ["red", "yellow"],
-            ["blue", "yellow"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "red"],
-            ["blue", "yellow"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 5,
-        "tasks": [
-            ["turquoise", "turquoise"],
-            ["red", "red"],
-            ["blue", "blue"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 6,
-        "tasks": [
-            ["blue", "blue", "blue"],
-            ["turquoise", "blue"],
-            ["turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "red", "blue"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 2,
-        "tasks": [
-            ["red", "red", "red", "red"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 5,
-        "tasks": [
-            ["yellow", "yellow"],
-            ["turquoise"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "yellow", "red", "blue"],
-            ["blue", "blue", "blue"]
-        ]
-    },
-
-
-    {
-        "color": "yellow",
-        "cost": 7,
-        "tasks": [
-            ["turquoise", "red"],
-            ["turquoise", "blue"],
-            ["red", "blue"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 2,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 3,
-        "tasks": [
-            ["red", "blue", "blue"]
-        ]
-    },
-    {
-        "color": "yellow",
-        "cost": 1,
-        "tasks": [
-            []
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 3,
-        "tasks": [
-            ["turquoise", "blue", "yellow"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 6,
-        "tasks": [
-            ["blue", "blue"],
-            ["yellow", "yellow"],
-            ["turquoise"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 2,
-        "tasks": [
-            ["blue", "blue", "blue", "blue"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 2,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "yellow"],
-            ["red", "blue"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 4,
-        "tasks": [
-            ["blue", "blue", "blue", "blue"],
-            ["blue", "blue"]
-        ]
-    },
-
-
-    {
-        "color": "turquoise",
-        "cost": 6,
-        "tasks": [
-            ["blue", "blue"],
-            ["yellow", "yellow"],
-            ["red"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "yellow"],
-            ["red", "blue"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 4,
-        "tasks": [
-            ["blue", "blue", "blue"],
-            ["yellow", "yellow", "yellow"],
-            ["red", "red"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 3,
-        "tasks": [
-            ["yellow", "turquoise", "turquoise"]
-        ]
-    },
-    {
-        "color": "red",
-        "cost": 5,
-        "tasks": [
-            ["blue", "blue", "blue"],
-            ["blue"]
-        ]
-    },
-    {
-        "color": "blue",
-        "cost": 4,
-        "tasks": [
-            ["blue", "blue", "blue"],
-            ["turquoise", "red"]
-        ]
-    },
-    {
-        "color": "turquoise",
-        "cost": 4,
-        "tasks": [
-            ["turquoise", "turquoise", "turquoise"],
-            ["blue", "yellow"]
-        ]
-    }
+    "01_b_1",
+    "02_y_4_yyy_rb",
+    "03_r_3_brr",
+    "04_r_2_rrrr",
+    "05_r_6_ttt_ty_yy",
+    "06_y_2_yyyy",
+    "07_y_2_yyyy",
+    "08_r_5_bb_y",
+    "09_t_5_tt_rr_yy",
+    "10_y_6_tt_rr_b",
+    "11_t_3_byy",
+    "12_b_6_tt_rr_y",
+    "13_b_3_ybb",
+    "14_t_1",
+    "15_y_5_rrr_r",
+    "16_r_4_yyyy_yy",
+    "17_b_3_t_rr",
+    "18_y_5_tt_r",
+    "19_b_5_tt_bb_yy",
+    "20_t_5_rr_b",
+    "21_t_3_tyrb_yyy",
+    "22_b_4_ttt_rrr_yy",
+    "23_t_3_try",
+    "24_y_3_tyy",
+    "25_r_4_tr_by",
+    "26_r_4_bbb_yyy_tt",
+    "27_r_1",
+    "28_r_7_tb_ty_by",
+    "29_b_5_ttt_t",
+    "30_y_4_tttt_tt",
+    "31_t_6_rrr_rb_bb",
+    "32_y_3_rby",
+    "33_t_3_rtt",
+    "34_t_5_yyy_y",
+    "35_b_2_bbbb",
+    "36_y_5_rr_bb_yy",
+    "37_b_4_rrrr_rr",
+    "38_r_3_tyrb_ttt",
+    "39_b_6_yyy_ry_rr",
+    "40_y_4_ttt_rrr_bb",
+    "41_r_4_rrr_ty",
+    "42_b_7_tr_ty_ry",
+    "43_t_7_rb_ry_by",
+    "44_y_4_tr_by",
+    "45_r_5_tt_rr_bb",
+    "46_y_6_bbb_tb_tt",
+    "47_r_3_trb",
+    "48_r_2_rrrr",
+    "49_b_5_yy_t",
+    "50_y_3_tyrb_bbb",
+    "51_y_7_tr_tb_rb",
+    "52_t_2_tttt",
+    "53_y_3_rbb",
+    "54_y_1",
+    "55_b_3_tby",
+    "56_r_6_bb_yy_t",
+    "57_b_2_bbbb",
+    "58_t_2_tttt",
+    "59_b_4_ty_rb",
+    "60_t_4_bbbb_bb",
+    "61_t_6_bb_yy_r",
+    "62_t_4_ty_rb",
+    "63_t_4_bbb_yyy_rr",
+    "64_r_3_ytt",
+    "65_r_5_bbb_b",
+    "66_b_4_bbb_tr",
+    "67_t_4_ttt_by"
 ]

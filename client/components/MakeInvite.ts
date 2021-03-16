@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { ALL_PLAYER_COLORS, PlayerColor } from '../../server/game/Player';
+import { ALL_PLAYER_COLORS, PlayerColor } from '../../server/game/PlayerColor';
 import { makeFetchOptions } from '../Utils';
 
 export interface Seat {

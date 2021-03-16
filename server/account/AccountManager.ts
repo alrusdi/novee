@@ -25,12 +25,13 @@ export class AccountManager {
         StorageManager.get().set(key, JSON.stringify(account));
     }
 
-    static loadAll() {
+    static async loadAll(next = () => {}) {
         const storage = StorageManager.get();
         storage.getAll('accounts:*', (data: Array<string>) => {
             const accounts = data.map((acc) => JSON.parse(acc));
             AccountManager.accounts = accounts;
             console.log('Loaded ' + accounts.length + ' accounts from db');
+            next();
         })
     }
 }

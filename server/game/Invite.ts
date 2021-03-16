@@ -1,6 +1,6 @@
 import { CreateGameModel } from '../api/models/CreateGameModel';
 import { randomId } from '../Utils';
-import { ALL_PLAYER_COLORS, PlayerColor } from './Player';
+import { ALL_PLAYER_COLORS, PlayerColor } from './PlayerColor';
 
 export class Seat {
     public id: string;

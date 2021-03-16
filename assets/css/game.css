@@ -1,81 +1,194 @@
-.tile {
+.game-container {
+    margin: 25px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.game-block {
     display: inline-block;
     vertical-align: top;
-    border: 2px solid gray;
-    width: 127px;
-    height: 127px;
+}
+
+.game-block--availability {
+    min-width: 550px;
+    min-height: 470px;
+}
+
+.game-block--tiles {
+    max-width: 800px;
+    white-space: nowrap;
+}
+
+.tiles-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiles-container {
+    background: url(/assets/img/tiles_bg.png);
+    display: inline-block;
+    vertical-align: top;
+    padding: 3px 0 0 2px;
+}
+
+.tiles-available-wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 455px;
+}
+
+.availability-slot {
+    width: 77px;
+    height: 77px;
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    margin-top: 200px;
+}
+
+.availability-slot--empty {
+    border: 1px solid #2b2a2a;
     border-radius: 20px;
-    padding: 5px 0 0 5px;
-    background: green;
-  }
-  
-  .tile-red {
-    background: #c4041c;
-  }
-  
-  .tile-green {
-    background: #00b855;
-  }
-  
-  .tile-blue {
-    background: #2a00c7;
-  }
-  
-  .tile-turquoise {
-    background: #2a00c7;
-  }
-  
-  
-  .tile-pos-wrapper {
-      display: inline-block;
-      vertical-align: middle;
-      text-align: center;
-      border: 3px solid gray;
-      width: 48px;
-      height: 48px;
-      border-radius: 30px;
-      margin: 5px 0 0 5px;
-  }
-  
-  .tile-type-task {
-    padding: 5px 0 0 0px;
-    height: 45px;
-    background: #ffffffbf;
-  }
-  
-  .tile-cost {
-    font-family: Helvetica;
+    background: #0b0b0b;
+}
+
+.availability-slot--0 {
+    margin: 0 0 0 -323px;
+}
+
+.availability-slot--1 {
+    margin: 0 0 0 -83px;
+}
+
+.availability-slot--2 {
+    margin: 0 0 0 158px;
+}
+
+.availability-slot--3 {
+    margin: 0 0 0 400px;
+}
+
+.availability-slot--4 {
+    margin: 120px 0 0 400px;
+}
+
+.availability-slot--5 {
+    margin: 242px 0 0 400px;
+}
+
+.availability-slot--6 {
+    margin: 364px 0 0 400px;
+}
+
+.availability-slot--7 {
+    margin: 364px 0 0 158px;
+}
+
+.availability-slot--8 {
+    margin: 364px 0 0 -83px;
+}
+
+.availability-slot--9 {
+    margin: 364px 0 0 -323px;
+}
+
+.availability-slot--10 {
+    margin: 242px 0 0 -323px;
+}
+
+.availability-slot--11 {
+    margin: 120px 0 0 -323px;
+}
+
+.availability-slot--0:before,
+.availability-slot--1:before,
+.availability-slot--2:before
+{
+    position: absolute;
+    width: 15px;
+    height: 77px;
+    background: url(/assets/img/arrows.png) no-repeat;
+    content: "";
+    margin: 8px 0 0 93px;
+}
+
+.availability-slot--3:before,
+.availability-slot--4:before,
+.availability-slot--5:before
+{
+    position: absolute;
+    width: 15px;
+    height: 77px;
+    background: url(/assets/img/arrows.png) no-repeat;
+    content: "";
+    margin: 62px 0 0 25px;
+    transform: rotate(90deg);
+}
+
+.availability-slot--6:before,
+.availability-slot--7:before,
+.availability-slot--8:before
+{
+    position: absolute;
+    width: 15px;
+    height: 77px;
+    background: url(/assets/img/arrows.png) no-repeat;
+    content: "";
+    margin: -8px 0 0 -30px;
+    transform: rotate(180deg);
+}
+
+.availability-slot--9:before,
+.availability-slot--10:before,
+.availability-slot--11:before
+{
+    position: absolute;
+    width: 15px;
+    height: 77px;
+    background: url(/assets/img/arrows.png) no-repeat;
+    content: "";
+    margin: -60px 0 0 44px;
+    transform: rotate(-90deg);
+}
+
+.availability-slot--available {
+    cursor: pointer;
+}
+
+.availability-slot--available .availability-slot-content:before {
+    position: absolute;
+    margin: -14px 0 0 -12px;
+    width: 103px;
+    height: 103px;
+    content: "";
+    background: url(/assets/img/selection_frame.png) no-repeat;
+}
+
+.availability-slot--available:hover .availability-slot-content:before,
+.availability-slot--selected .availability-slot-content:before {
+    background-position: -122px 0;
+}
+
+.game-stats-container {
+    width: 260px;
+    margin: 95px 0 0 35px;
+    height: 255px;
+    text-align: center;
+    color: white;
     font-size: 30px;
     font-weight: bold;
-    color: #ffffffb3;
-    width: 60px;
-    height: 60px;
+}
+
+.game-activations-counter {
     display: inline-block;
-    text-align: left;
-    padding: 11px 0 0 16px;
-  }
-  
-  .tile-task {
-      width: 18px;
-      height: 19px;
-      background: url(http://127.0.0.1:8080/assets/img/circles.png);
-      display: inline-block;
-      vertical-align: top;
-      margin: 0 auto;
-  }
-  
-  .tile-task--yellow {
-    background-position: 18px 0;
-  }
-  
-  .tile-task--red {
-    background-position: 18px 0;
-  }
-  
-  .tile-task--blue {
-    background-position: 38px 0;
-  }
-  
-  .tile-task--turquoise {
-    background-position: 58px 0;
-  }
+    vertical-align: middle;
+    text-align: center;
+    width: 28px;
+    height: 25px;
+    border-radius: 30px;
+    margin: -2px 0 0 4px;
+    padding: 3px 0 0 0;
+}

@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {describe} from 'mocha';
 import { CreateGameModel } from '../../server/api/models/CreateGameModel';
 import { Invite } from '../../server/game/Invite';
-import { PlayerColor } from '../../server/game/Player';
+import { PlayerColor } from '../../server/game/PlayerColor';
 
 
 describe('Invite', function() {

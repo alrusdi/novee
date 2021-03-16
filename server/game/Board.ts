@@ -1,7 +1,6 @@
 import { Tile } from '../tiles/Tile';
 import { TileDealer } from '../tiles/TileDealer';
 
-const MAX_PLAYER_POSITION = 23;
 const MAX_AVAILABILITY_MARKER_POSITION = 11
 const MAX_TILES_AVAILABLE = 3;
 
@@ -10,6 +9,23 @@ export class PlayerPosition {
     public priority: number = 0;
     
     constructor(public playerId: string) {}
+
+    serialize(): string {
+        const data = {
+            playerId: this.playerId,
+            index: this.index,
+            priority: this.priority
+        }
+        return JSON.stringify(data);
+    }
+
+    static deserialize(serializedPlayerPosition: string): PlayerPosition {
+        const data = JSON.parse(serializedPlayerPosition);
+        const pos = new PlayerPosition(data.playerId);
+        pos.index = data.index;
+        pos.priority = data.priority;
+        return pos;
+    }
 }
 
 export class Board {
@@ -17,19 +33,36 @@ export class Board {
     private tileDealer: TileDealer;
     public availabilityMarkerPosition: number = 0;
 
-    constructor(tileDealer: TileDealer, public playerPositions: Array<PlayerPosition>) {
+    private constructor(tileDealer: TileDealer, public playerPositions: Array<PlayerPosition>) {
         this.tileDealer = tileDealer;
-        this.refreshTiles();
+    }
+
+    static newBoard(tileDealer: TileDealer, playerPositions: Array<PlayerPosition>): Board {
+        const board = new Board(tileDealer, playerPositions);
+        board.refreshTiles();
+        return board
+    }
+
+    getSortedPlayerPositions(): Array<PlayerPosition> {
+        const cmp = (p1: PlayerPosition, p2: PlayerPosition) => {
+            if (p1.index > p2.index) {
+                return 1;
+            } else if (p1.index === p2.index) {
+                return p1.priority - p2.priority
+            } else if (p1.index > p2.index) {
+                return -1;
+            }
+            return 0;
+        }
+
+        this.playerPositions.sort(cmp);
+        return this.playerPositions;
     }
 
     advancePlayerPosition(playerId: string, steps: number) {
         const pos = this.playerPositions.find((p) => p.playerId === playerId);
         if (pos === undefined) throw new Error('No player with id="' + playerId + '" found on the board');
-        let newPositionIndex = pos.index + steps;
-        if (newPositionIndex > MAX_PLAYER_POSITION) {
-            newPositionIndex -= MAX_PLAYER_POSITION;
-        }
-        pos.index = newPositionIndex;
+        pos.index = pos.index + steps;
         pos.priority = Date.now();
     }
 
@@ -49,18 +82,31 @@ export class Board {
         return topPos.playerId;
     }
 
-    refreshTiles(): boolean {
-        if (this.getAvailableTiles().length > 2) return false;
+    countRemainingTiles() {
+        return this.tiles.filter((t) => t !== undefined).length
+    }
+
+    refreshTiles(soloMode: boolean = false): boolean {
+        if (this.getAvailableTiles().length > 2 && ! soloMode) return false;
 
         var tile: Tile | undefined;
-        for (tile of this.tiles) {
-            if (tile) this.tileDealer.discard(tile);
-        }
-        this.tiles = [];
+        if (soloMode) {
+            for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
+                if (this.tiles[i] === undefined) {
+                    tile = this.tileDealer.deal();
+                    this.tiles[i] = tile;
+                }
+            }
+        } else {
+            for (tile of this.tiles) {
+                if (tile) this.tileDealer.discard(tile);
+            }
+            this.tiles = [];
 
-        for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
-            tile = this.tileDealer.deal();
-            this.tiles.push(tile);
+            for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
+                tile = this.tileDealer.deal();
+                this.tiles.push(tile);
+            }
         }
         return true
     }
@@ -86,19 +132,39 @@ export class Board {
         return availableTiles;
     }
 
-    getTile(tileIndex: number): Tile {
-        const tile = this.tiles[tileIndex];
+    takeTile(tileId: string): Tile | undefined {
+        const tile = this.getAvailableTiles().find(t => t.id === tileId)
         if (tile === undefined) {
-            throw new Error('There is no tile in "' + tileIndex.toString() + '" position');
+            console.error('Can\t get tile ' + tileId);
+            return undefined;
         }
 
-        if (this.getAvailableTiles().find(t => t.id === tile.id) === undefined) {
-            throw new Error('Tile "' + tile.id + '" is not available');
-        }
-
+        const tileIndex = this.tiles.indexOf(tile);
         this.availabilityMarkerPosition = tileIndex;
         this.tiles[tileIndex] = undefined;
 
         return tile;
+    }
+
+    getTilesForClient(): Array<Tile | undefined> {
+        return this.tiles;
+    }
+
+    static deserialize(serializedBoard: string, tileDealer: TileDealer): Board {
+        const data = JSON.parse(serializedBoard);
+        const playerPositions = data.playerPositions.map((p: string) => PlayerPosition.deserialize(p))
+        const board = new Board(tileDealer, playerPositions);
+        board.tiles = data.tileIds.map((t: string | undefined) => t !== undefined ?  Tile.fromDefinition(t): undefined);
+        board.availabilityMarkerPosition = data.availabilityMarkerPosition;
+        return board;
+    }
+
+    serialize(): string {
+        const data = {
+            tileIds: this.tiles.map(t => t?.id),
+            availabilityMarkerPosition: this.availabilityMarkerPosition,
+            playerPositions: this.playerPositions.map(p => p.serialize())
+        }
+        return JSON.stringify(data);
     }
 }

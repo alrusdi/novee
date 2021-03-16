@@ -51,6 +51,26 @@ export class Dispatcher {
                     }
                 }
             }
+
+            if (apiMethod === 'get-by-player') {
+                return {
+                    instance: instance,
+                    method: instance.getGameByPlayerId,
+                    args: [urlParts[2]]
+                }
+            }
+
+            if (apiMethod === 'place-tile') {
+                const playerId = urlParts[2];
+                const newTileId = urlParts[3];
+                const targetTileId = urlParts[4];
+                const side = urlParts[5]
+                return {
+                    instance: instance,
+                    method: instance.placeTile,
+                    args: [playerId, newTileId, targetTileId, side]
+                }
+            }
         }
 
         const instance = new ErrorApi();

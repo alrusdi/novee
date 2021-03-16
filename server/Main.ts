@@ -10,6 +10,7 @@ import path from 'path';
 import { Dispatcher } from './api/Dispatcher';
 import { AccountManager } from './account/AccountManager';
 import { StorageManager } from './storage/StorageManager';
+import { GameManager } from './game/GamesManager';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -101,7 +102,9 @@ app.listen(port, async () => {
     await setupPassport();
     
     StorageManager.init(process.env.STORAGE_CONNECTION_STRING || "");
-    AccountManager.loadAll();
+    AccountManager.loadAll(() => {
+        GameManager.loadAll();
+    });
 
     console.log(`server started at http://localhost:${ port }`);
 });

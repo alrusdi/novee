@@ -25,6 +25,9 @@ export class Player {
         for (let tile of tilesetData.tiles.values()) {
             tile.tasks.map((task: Task) => {task.isComplete() ? activationsCount += 1 : 0})
         }
+        if (activationsCount > MAX_ACTIVE_TILES) {
+            activationsCount = MAX_ACTIVE_TILES;
+        }
         return activationsCount;
     }
 

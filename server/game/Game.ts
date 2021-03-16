@@ -46,10 +46,6 @@ export class Game {
 
         const board = Board.newBoard(dealer, playersPositions)
 
-        for (let p of players) {
-            p.rootTile = dealer.deal();
-        }
-
         const firstPlayerId = board.getFirstPlayerId();
         const firstPlayer = players.find(p => p.id === firstPlayerId);
         if (firstPlayer === undefined) throw new Error('Can\'t set first player');
@@ -74,6 +70,14 @@ export class Game {
 
     isSolo() {
         return this.players.length < 2;
+    }
+
+    startPlayerTileset(player: Player, tile: Tile) {
+        player.rootTile = tile;
+        if (this.isSolo()) {
+            this.soloScore += tile.cost;
+        }
+        this.finishTurn(player);
     }
 
     attachTileToPlayerTileset(player: Player, newTile: Tile, targetTile: Tile, side: Side) {

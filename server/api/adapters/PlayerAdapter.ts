@@ -53,6 +53,28 @@ function buildTileset(tilesetData: TilesetData) {
     return tileset;
 }
 
+function getInitialTileset() {
+    const tileset: Array<Array<TileClientModel | TilePlaceholder>> = [];
+    tileset.push([
+        {tileId: '', side: undefined},
+        {tileId: '', side: undefined},
+        {tileId: '', side: undefined}
+    ])
+
+    tileset.push([
+        {tileId: '', side: undefined},
+        {tileId: 'root', side: Side.Top},
+        {tileId: '', side: undefined}
+    ])
+
+    tileset.push([
+        {tileId: '', side: undefined},
+        {tileId: '', side: undefined},
+        {tileId: '', side: undefined}
+    ])
+    return tileset;
+}
+
 
 export function playerToApi(player: Player): PlayerClientModel {
     const rootTile = player.rootTile;
@@ -62,6 +84,8 @@ export function playerToApi(player: Player): PlayerClientModel {
         const tilesetData = rootTile.getTilesetData()
         tileset = buildTileset(tilesetData);
         activationsRemaining -= player.getActivationsCount(tilesetData)
+    } else {
+        tileset = getInitialTileset();
     }
     
     return {

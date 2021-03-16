@@ -104,7 +104,39 @@ export class GamesApi extends BaseApi {
         const game: Game = gameInfo.data.game;
         const player: Player = gameInfo.data.player;
 
-        if (player.rootTile === undefined) throw new Error('No root tile for player ' + playerId);
+        if (player.rootTile === undefined) {
+            if (targetTileId !== 'root') throw new Error('No root tile for player ' + playerId);
+
+            const newTile: Tile | undefined = game.board.takeTile(newTileId);
+
+            if (newTile === undefined) {
+                return {
+                    status: 'Fail',
+                    message: 'Can\t take tile from the board',
+                    data: {
+                        gameId: game.id,
+                        tileId: newTileId
+                    }
+                }
+            }
+
+            game.startPlayerTileset(player, newTile);
+
+            return {
+                status: 'Ok',
+                message: 'Tile attached successfully',
+                data: {
+                    gameId: game.id,
+                    board: boardToApi(game.board),
+                    player: playerToApi(player),
+                    isSolo: game.isSolo(),
+                    soloStage: game.soloStage,
+                    soloScore: game.soloScore,
+                    soloActivations: game.getSoloActivationsCount(),
+                    soloMaxActivations: game.soloStage === 1 ? SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT : MAX_ACTIVE_TILES
+                }
+            }
+        }
         const tilesetData = player.rootTile.getTilesetData();
 
         const targetTile: Tile | undefined = tilesetData.tiles.get(targetTileId)

@@ -1,4 +1,7 @@
 import { AccountManager } from '../account/AccountManager';
+import { InvitationState } from '../game/Const';
+import { Game } from '../game/Game';
+import { GameManager } from '../game/GamesManager';
 import { Seat } from '../game/Invite';
 import { InvitesManager } from '../game/InvitesManager';
 import { PlayerColor } from '../game/PlayerColor';
@@ -22,7 +25,9 @@ export class InvitesApi extends BaseApi {
             data: {
                 inviteId: invite.id,
                 seats: this.formatSeats(invite.getSeats()),
-                isAdmin: this.accountId === invite.accountId
+                isAdmin: this.accountId === invite.accountId,
+                state: invite.state,
+                yourSeatId: invite.getSeatIdByAccount(this.accountId)
             }
         }
     }
@@ -40,8 +45,10 @@ export class InvitesApi extends BaseApi {
             message: 'Invite created successfully',
             data: {
                 inviteId: invite.id,
+                seats: invite.getSeats(),
                 isAdmin: true,
-                seats: invite.getSeats()
+                state: invite.state,
+                yourSeatId: invite.getSeatIdByAccount(this.accountId)
             }
         }
     }
@@ -52,10 +59,7 @@ export class InvitesApi extends BaseApi {
         const seat = invite.takeSeat(seatInfo.seatId, this.accountId, seatInfo.color);
 
         if (seat === undefined) {
-            return {
-                status: 'Fail',
-                message: "Can't take this seat"
-            }
+            return this.error('Can\'t take this seat');
         }
 
         return {
@@ -64,9 +68,60 @@ export class InvitesApi extends BaseApi {
             data: {
                 inviteId: invite.id,
                 seats: this.formatSeats(invite.getSeats()),
-                isAdmin: this.accountId === invite.accountId
+                isAdmin: this.accountId === invite.accountId,
+                state: invite.state,
+                yourSeatId: invite.getSeatIdByAccount(this.accountId)
             }
         }
+    }
+
+    setState(inviteId: string, state: InvitationState) {
+        const invite = InvitesManager.getInvite(inviteId);
+
+        if ( ! invite.isAdmin(this.accountId)) {
+            return this.error('You are not admin of this invitation');
+        }
+
+        invite.setState(state);
+
+        return this.success(
+            'Invite state changed successfully',
+            {
+                inviteId: invite.id,
+                seats: this.formatSeats(invite.getSeats()),
+                isAdmin: this.accountId === invite.accountId,
+                state: invite.state,
+                yourSeatId: invite.getSeatIdByAccount(this.accountId)
+            }
+        )
+    }
+
+    confirmSeat(inviteId: string, seatId: string) {
+        const invite = InvitesManager.getInvite(inviteId);
+
+        const seat = invite.getSeats().find((s: Seat) => s.id === seatId);
+        if (seat === undefined) return this.error('Seat is not found', {seatId})
+
+        if (seat.accountId !== this.accountId) return this.error('It is not your seat!', {seatId})
+
+        seat.isConfirmed = true;
+
+        if (invite.isAllSeatsConfirmed()) {
+            invite.state = InvitationState.COMPLETE;
+            const game = Game.createGameFromInvite(invite);
+            GameManager.setGame(game);
+        }
+
+        return this.success(
+            'Seat is confirmed',
+            {
+                inviteId: invite.id,
+                seats: this.formatSeats(invite.getSeats()),
+                isAdmin: this.accountId === invite.accountId,
+                state: invite.state,
+                yourSeatId: invite.getSeatIdByAccount(this.accountId)
+            }
+        )
     }
 
     private formatSeats(seats: Array<Seat>) {
@@ -75,7 +130,8 @@ export class InvitesApi extends BaseApi {
             newSeats.push({
                 id: seat.id,
                 color: seat.color,
-                claimedBy: this.getClaimedBy(seat.accountId)
+                claimedBy: this.getClaimedBy(seat.accountId),
+                isConfirmed: seat.isConfirmed
             })
         }
         return newSeats;

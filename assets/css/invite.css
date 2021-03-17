@@ -1,0 +1,129 @@
+
+.make-invite {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.invite-title {
+    text-align: center;
+    color: #2b2929;
+    font-size: 32px;
+    font-weight: bold;
+    width: 507px;
+    display: inline-block;
+    filter: drop-shadow(0 0 2px #FFFFFFA1);
+    position: absolute;
+    margin: -104px 0 0 -9px;
+}
+
+.invite-wrapper {
+    background: url(/assets/img/invite_bg.png) no-repeat;
+    width: 507px;
+    margin: 0 0 0 47px;
+    height: 646px;
+    padding: 148px 0 0 0;
+}
+
+.invite-refreshing {
+    display: inline-block;
+    background: #fdfdfd;
+    padding: 0 20px 13px 6px;
+    border-radius: 26px;
+    position: absolute;
+    margin: 20px 0 0 -20px;
+}
+.invite-refreshing-caption {
+    padding-left: 24px;
+}
+
+.invite-start-game {
+    margin: -12px 0 0 139px
+}
+
+.seats {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    text-align: center;
+}
+
+.seat-container {
+    width: 379px;
+    height: 117px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 20px 0;
+    text-align: left;
+}
+
+.seat-color {
+    width: 93px;
+    height: 93px;
+    background: url(/assets/img/invite_elements.png) no-repeat;
+}
+
+.seat-color--orange {
+    background-position: -13px -7px;
+}
+
+.seat-color--olive {
+    background-position: -240px -7px;
+}
+
+.seat-color--pink {
+    background-position: -471px -7px;
+}
+
+.seat-color--violet {
+    background-position: -126px -7px;
+}
+
+
+.seat-frame {
+    width: 379px;
+    height: 117px;
+    background: url(/assets/img/invite_elements.png) no-repeat;
+    background-position: -8px -115px;
+    position: absolute;
+    margin: -108px 0 0 -7px;
+}
+
+.seat-claim-button {
+    position: absolute;
+    margin: -57px 0 0 119px;
+    transform: scale(0.7);
+}
+
+.seat-claimed-by {
+    position: absolute;
+    margin: -81px 0 0 107px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 246px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.seat-checkmark {
+    position: absolute;
+    width: 72px;
+    height: 67px;
+    background: url(/assets/img/invite_elements.png) no-repeat;
+    background-position: -423px -143px;
+    margin: -84px 0 0 11px;
+}
+
+
+.seat-pending {
+    position: absolute;
+    width: 72px;
+    height: 67px;
+    background: url(/assets/img/invite_elements.png) no-repeat;
+    background-position: -503px -144px;
+    margin: -84px 0 0 11px;
+    animation:pending-icon-spin 4s linear infinite;
+}
+
+@keyframes pending-icon-spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

@@ -1,22 +1,23 @@
 import { defineComponent } from 'vue';
-import { ALL_PLAYER_COLORS, PlayerColor } from '../../server/game/PlayerColor';
 import { makeFetchOptions } from '../Utils';
-
-export interface Seat {
-    id: string;
-    nickname: string;
-    color: PlayerColor;
-}
+import { Seat } from './Seat';
+import { SeatConfirmation } from './SeatConfirmation';
+import { Button } from './Button';
+import { InvitationState } from '../../server/game/Const';
 
 export const MakeInvite = defineComponent({
     data() {
         return {
             isAdmin: false,
             isLoading: true,
-            isSeatsDisabled: false,
+            isSeatsDisabled: true,
             isRefreshing: false,
+            isSetStateEnabled: false,
             inviteId: "",
-            seats: []
+            seats: [],
+            state: InvitationState.INVITATION,
+            confirmationsCount: 0,
+            yourSeatId: ''
         } as any;
     },
     mounted() {
@@ -28,6 +29,11 @@ export const MakeInvite = defineComponent({
                 .then((res) => this.onInviteReady(res))
                 .catch((_) => alert('Cant create invite'));
         }
+    },
+    components: {
+        Seat,
+        SeatConfirmation,
+        Button
     },
     methods: {
         refreshInvite(inviteId: string) {
@@ -49,12 +55,25 @@ export const MakeInvite = defineComponent({
             if (this.isInvitationPage()) return;
             window.history.replaceState('', 'Invitation to play Novee', '/invite/' + this.inviteId);
         },
+        youAreClaimedTheSeat() {
+            for (const seat of this.seats) {
+                if (seat.claimedBy === 'You') return true;
+            }
+            return false;
+        },
         onInviteReady(inviteInfo: any) {
             this.inviteId = inviteInfo.data.inviteId;
             this.seats = inviteInfo.data.seats;
             this.isLoading = false;
-            this.isSeatsDisabled = false;
+            this.isSeatsDisabled = this.youAreClaimedTheSeat();
             this.isAdmin = inviteInfo.data.isAdmin;
+            this.state = inviteInfo.data.state;
+            this.yourSeatId = inviteInfo.data.yourSeatId;
+            this.isSetStateEnabled = true;
+            if (this.state === InvitationState.COMPLETE) {
+                window.location.href = '/game/' + this.yourSeatId;
+                return;
+            }
             this.updateUrl();
             setTimeout(() => this.refreshInvite(this.inviteId), 3000)
         },
@@ -73,45 +92,61 @@ export const MakeInvite = defineComponent({
         },
         canStartGame() {
             if ( ! this.isAdmin) return false;
+            if ( ! this.isSetStateEnabled) return false;
+            if (this.state !== InvitationState.INVITATION) return false;
             const takenSeats = this.seats.filter((s: any) => s.claimedBy);
             return takenSeats.length > 1;
         },
-        getAllColors() {
-            return ALL_PLAYER_COLORS;
+        getSeats() {
+            console.log(this.state);
+            if (this.state === InvitationState.INVITATION) return this.seats;
+            if (this.state === InvitationState.CONFIRMATION) return this.seats.filter((s: any) => s.claimedBy !== '');
+        },
+        setConfirmationState() {
+            const urlParts = ['/api/invites/set-state', this.inviteId, InvitationState.CONFIRMATION];
+            const url = urlParts.join('/')
+            this.isSetStateEnabled = false;
+            fetch(url)
+                .then((response) => response.json())
+                .then((res) => this.onInviteReady(res))
+                .catch((_) => alert('Can\'t change invitation state'));
+        },
+        confirmSeat(seat: any) {
+            const urlParts = ['/api/invites/confirm-seat', this.inviteId, seat.id];
+            const url = urlParts.join('/')
+            fetch(url)
+                .then((response) => response.json())
+                .then((res) => this.onInviteReady(res))
+                .catch((_) => alert('Can\'t confirm your seat'));
         }
     },
-    'template': `
+    template: `
     <div class="make-invite">
-        <template v-if="isLoading">
-            <div class="loading">Loading...</div>
-        </template>
-        <template v-else>
-            <div class="seats">
-                <div class="seat" v-for="seat in seats" :key="seat.id">
-                    <template v-if="seat.claimedBy">
-                        <div class="seat-claimed">
-                            <div class="seat-claimed-caption">Claimed by:</div>
-                            <b :class="'seat-claimer seat-color--'+seat.color">{{ seat.claimedBy }}</b>
-                        </div>
-                    </template>
-                    <template v-else>
-                        <div class="seat-colors">
-                            <label class="seat-color" :class="'seat-color--'+color" v-for="color in getAllColors()">
-                                <input type="radio" :name="'color-'+seat.id" :value="color" v-model="seat.color" :disabeled="isSeatsDisabled" />
-                            </label>
-                        </div>
-                        <input type="button" value="Claim seat!" v-on:click.prevent="takeSeat(seat)" :disabeled="isSeatsDisabled"  />
+        <div class="invite-wrapper">
+            <label class="invite-title">Invite</label>
+            <template v-if="isLoading">
+                <div class="loading">Loading...</div>
+            </template>
+            <template v-else>
+                <div class="seats" v-if="state === 'invitation'">
+                    <template v-for="seat in getSeats()" :key="seat.id">
+                        <Seat @onClaimSeat="takeSeat" :seat="seat" :disabled="isSeatsDisabled" />
                     </template>
                 </div>
-            </div>
-            <div class="invite-refreshing" v-if="isRefreshing">
-                <div class="lds-dual-ring"></div>
-                <label class="invite-refreshing-caption">Refreshing invitation...</label>
-            </div>
-            <div class="invite-start-game" v-if="canStartGame()">
-                You can <a class="invite-start-game-link" href="#" v-on:clik.prevent="startGame()">start game</a>
-            </div>
-        </template>
+                <div class="seats" v-if="state === 'confirmation'">
+                    <template v-for="seat in getSeats()" :key="seat.id">
+                        <SeatConfirmation @onConfirmSeat="confirmSeat" :seat="seat" :disabled="seat.id !== yourSeatId" />
+                    </template>
+                </div>
+                <div class="invite-refreshing" v-if="false">
+                    <div class="lds-dual-ring"></div>
+                    <label class="invite-refreshing-caption">Refreshing invitation...</label>
+                </div>
+                <div class="invite-start-game" v-if="canStartGame()">
+                    <Button :onClick="setConfirmationState">Start game!</Button>
+                </div>
+            </template>
+        </div>
     </div>
     `
 });

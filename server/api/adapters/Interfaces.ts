@@ -25,3 +25,19 @@ export interface PlayerClientModel {
     tileset: Array<Array<TileClientModel | TilePlaceholder>>;
     activationsRemaining: number;
 }
+
+export interface AvailabilitySlotClientModel {
+    isAvailable: boolean;
+    tile: TileClientModel | "";
+}
+
+
+export interface PlayerPositionClientModel {
+    playerId: string;
+    distanceToNextPlayer: number;
+}
+
+export interface BoardClientModel {
+    availabilitySlots: Array<AvailabilitySlotClientModel>;
+    playerPositions: Array<PlayerPositionClientModel>
+}

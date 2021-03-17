@@ -37,6 +37,22 @@ export class Dispatcher {
                     args: [urlParts[2]]
                 }
             }
+
+            if (apiMethod === 'set-state') {
+                return {
+                    instance: instance,
+                    method: instance.setState,
+                    args: [urlParts[2], urlParts[3]]
+                }
+            }
+
+            if (apiMethod === 'confirm-seat') {
+                return {
+                    instance: instance,
+                    method: instance.confirmSeat,
+                    args: [urlParts[2], urlParts[3]]
+                }
+            }
         }
 
         if (apiNamespace === 'games') {

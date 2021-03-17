@@ -5,3 +5,9 @@ export enum GameState {
     ACTIVE = 'active',
     FINISHED = 'finished'
 }
+
+export enum InvitationState {
+    INVITATION = 'invitation',
+    CONFIRMATION = 'confirmation',
+    COMPLETE = 'complete'
+}

@@ -1,9 +1,11 @@
+import { AccountManager } from '../account/AccountManager';
 import { Side } from '../tiles/Side';
 import { Tile } from '../tiles/Tile';
 import { TileDealer } from '../tiles/TileDealer';
 import { randomId, shuffle } from '../Utils';
 import { Board, PlayerPosition } from './Board';
 import { GameState, SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT } from './Const';
+import { Invite, Seat } from './Invite';
 import { MAX_ACTIVE_TILES, Player } from './Player';
 
 interface InitialGameSettings {
@@ -61,6 +63,22 @@ export class Game {
         const game = new Game(settings);
         game.state = GameState.ACTIVE;
         return game
+    }
+
+    static createGameFromInvite(invite: Invite) {
+        const players: Array<Player> = [];
+        for (const seat of invite.getSeats().filter((s: Seat) => s.isConfirmed)) {
+            const account = AccountManager.getById(seat.accountId || '');
+            if (account === undefined) continue;
+            if (seat.color === undefined) continue;
+            const player = new Player(
+                seat.id,
+                account,
+                seat.color
+            )
+            players.push(player)
+        }
+        return Game.newGame(players);
     }
 
     getSoloActivationsCount(): number {

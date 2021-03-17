@@ -18,7 +18,7 @@ export const Button = defineComponent({
             if (this.isDisabled) {
                 classes.push('button--disabled');
             } else {
-                classes.push('button--' + this.color);
+                classes.push('button--' + (this.color || 'green'));
             }
             return classes.join(' ');
         },

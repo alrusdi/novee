@@ -1,22 +1,8 @@
 import { Task, Tile, Requirement } from '../../tiles/Tile';
 import { Board, PlayerPosition } from '../../game/Board';
 import { TileColor } from '../../tiles/TileColor';
-import { TaskClientModel, TileClientModel } from './Interfaces';
+import { BoardClientModel, PlayerPositionClientModel, TaskClientModel, TileClientModel } from './Interfaces';
 
-interface AvailabilitySlot {
-    isAvailable: boolean;
-    tile: TileClientModel | "";
-}
-
-interface BoardClientModel {
-    availabilitySlots: Array<AvailabilitySlot>;
-    playerPositions: Array<PlayerPositionClientModel>
-}
-
-interface PlayerPositionClientModel {
-    playerId: string;
-    distanceToNextPlayer: number;
-}
 
 function playerPositionsForClient(playerPositions: Array<PlayerPosition>): Array<PlayerPositionClientModel> {
     const ret: Array<PlayerPositionClientModel> = [];

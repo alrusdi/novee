@@ -1,0 +1,55 @@
+.player-positions {
+    padding: 20px 10px 10px 10px;
+    margin-left: -10px;
+}
+
+.player-positions-title {
+    padding: 0 0 19px 0;
+    font-size: 20px;
+}
+
+.player-position {
+    display: inline-block;
+    vertical-align: center;
+    margin-left: 10px;
+}
+
+.player-activation {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px solid #575757;
+    font-size: 18px;
+    line-height: 28px;
+    filter: drop-shadow(0 0 2px #fff);
+    color: #222;
+}
+
+.player-activation--pink {
+    background: pink;
+}
+
+.player-activation--olive {
+    background: olive;
+}
+
+.player-position-distance-wrapper {
+    width: 17px;
+}
+
+.player-position-distance {
+    position: absolute;
+    margin: -44px 0 0 3px;
+    color: #959595;
+    font-size: 23px;
+    line-height: 31px;
+}
+
+.player-position-distance:after {
+    position: absolute;
+    width: 15px;
+    height: 77px;
+    background: url(/assets/img/arrows.png) no-repeat;
+    content: "";
+    margin: 8px 0 0 -13px;
+}

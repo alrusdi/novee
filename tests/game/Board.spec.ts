@@ -36,7 +36,7 @@ describe('Board', function() {
         board.advancePlayerPosition("2", 1);
         board.advancePlayerPosition("1", 2);
 
-        expect(board.getFirstPlayerId()).to.eq("1");
+        expect(board.getFirstPlayerId()).to.eq("2");
 
         wait();
 

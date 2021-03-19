@@ -1,0 +1,15 @@
+.game-messages-container {
+    margin: 15px 0 0 0;
+    padding: 15px 10px 0 10px;
+    border-top: 1px solid #ffffff52;
+}
+
+.game-messages-title {
+    margin: 0;
+    padding: 0;
+}
+
+.game-messages {
+    margin-top: 15px;
+    font-size: 16px;
+}

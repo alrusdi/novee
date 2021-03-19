@@ -1,4 +1,5 @@
-import { MAX_ACTIVE_TILES, Player } from '../../game/Player';
+import { MAX_ACTIVE_TILES } from '../../game/Const';
+import { Player } from '../../game/Player';
 import { Side } from '../../tiles/Side';
 import { TilesetData, TileCoords } from '../../tiles/Tile';
 import { tileForClient } from './BoardAdapter';

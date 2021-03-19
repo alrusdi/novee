@@ -4,9 +4,9 @@ import { Tile } from '../tiles/Tile';
 import { TileDealer } from '../tiles/TileDealer';
 import { randomId, shuffle } from '../Utils';
 import { Board, PlayerPosition } from './Board';
-import { GameState, SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT } from './Const';
+import { GameState, MAX_ACTIVE_TILES, SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT } from './Const';
 import { Invite, Seat } from './Invite';
-import { MAX_ACTIVE_TILES, Player } from './Player';
+import { Player } from './Player';
 
 interface InitialGameSettings {
     id: string;
@@ -81,6 +81,10 @@ export class Game {
         return Game.newGame(players);
     }
 
+    getActivePlayer(): Player {
+        return this.activePlayer;
+    }
+
     getSoloActivationsCount(): number {
         const activationsCount = this.firstPlayer.getActivationsCount();
         return activationsCount;
@@ -95,6 +99,7 @@ export class Game {
         if (this.isSolo()) {
             this.soloScore += tile.cost;
         }
+        this.board.advancePlayerPosition(player.id, tile.cost);
         this.finishTurn(player);
     }
 

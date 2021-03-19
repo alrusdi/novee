@@ -2,8 +2,7 @@ import { TilesetData, Task, Tile } from '../tiles/Tile';
 import { Account } from '../account/Account';
 import { AccountManager } from '../account/AccountManager';
 import { PlayerColor } from './PlayerColor';
-
-export const MAX_ACTIVE_TILES = 21;
+import { MAX_ACTIVE_TILES } from './Const';
 
 export class Player {
     public rootTile: Tile | undefined;

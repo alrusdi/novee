@@ -70,6 +70,16 @@ export class GamesApiActions {
         return this
     }
 
+    checkIfItIsYourTurn(): GamesApiActions {
+        if (this.isStopped) return this;
+
+        if (this.game().getActivePlayer().account.id !== this.accountId) {
+            return this.error('It is not your turn!', {accountId: this.accountId})
+        }
+
+        return this;
+    }
+
     checkIfGameIsAvailableForThisUser(): GamesApiActions {
         if (this.isStopped) return this;
         if (GameManager.doesGameBelongsToAccount(this.game().id, this.accountId)) {

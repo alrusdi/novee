@@ -1,4 +1,5 @@
 export const SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT = 8;
+export const MAX_ACTIVE_TILES = 21;
 
 export enum GameState {
     NEW = 'new',

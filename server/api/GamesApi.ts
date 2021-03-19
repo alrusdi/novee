@@ -33,7 +33,7 @@ export class GamesApi extends BaseApi {
             .onComplete((res: GamesApiActions) => {
                 return this.success(
                     'Game loaded successfully',
-                    gameDataToApi(res.game(), res.player())
+                    gameDataToApi(res.game(), res.player(), this.accountId)
                 )
             })
     }
@@ -41,6 +41,7 @@ export class GamesApi extends BaseApi {
     placeTile(playerId: string, newTileId: string, targetTileId: string, side: Side): ApiResponse {
         return GamesApiActions.startNewAction(this.accountId)
             .loadGameDataByPlayerId(playerId)
+            .checkIfItIsYourTurn()
             .placeRootTileIfNeeded(newTileId, targetTileId)
             .checkIfTargetTileValid(targetTileId, side)
             .takeTileFromTheBoard(newTileId)
@@ -48,7 +49,7 @@ export class GamesApi extends BaseApi {
             .onComplete((res: GamesApiActions) => {
                 return this.success(
                     'Tile attached successfully',
-                    gameDataToApi(res.game(), res.player())
+                    gameDataToApi(res.game(), res.player(), this.accountId)
                 )
             })
     }

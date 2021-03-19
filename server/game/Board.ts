@@ -48,13 +48,12 @@ export class Board {
             if (p1.index > p2.index) {
                 return 1;
             } else if (p1.index === p2.index) {
-                return p1.priority - p2.priority
-            } else if (p1.index > p2.index) {
+                return p2.priority - p1.priority
+            } else if (p1.index < p2.index) {
                 return -1;
             }
             return 0;
         }
-
         this.playerPositions.sort(cmp);
         return this.playerPositions;
     }
@@ -62,23 +61,12 @@ export class Board {
     advancePlayerPosition(playerId: string, steps: number) {
         const pos = this.playerPositions.find((p) => p.playerId === playerId);
         if (pos === undefined) throw new Error('No player with id="' + playerId + '" found on the board');
-        pos.index = pos.index + steps;
+        pos.index += steps;
         pos.priority = Date.now();
     }
 
     getFirstPlayerId(): string {
-        let topPos = this.playerPositions[0];
-        for (let pos of this.playerPositions) {
-            if (pos.index > topPos.index) {
-                topPos = pos;
-                continue;
-            }
-            if (pos.index === topPos.index && pos.priority > topPos.priority) {
-                topPos = pos;
-                continue;
-            }
-        }
-
+        let topPos = this.getSortedPlayerPositions()[0];
         return topPos.playerId;
     }
 

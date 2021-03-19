@@ -31,7 +31,6 @@ export interface AvailabilitySlotClientModel {
     tile: TileClientModel | "";
 }
 
-
 export interface PlayerPositionClientModel {
     playerId: string;
     distanceToNextPlayer: number;
@@ -40,4 +39,11 @@ export interface PlayerPositionClientModel {
 export interface BoardClientModel {
     availabilitySlots: Array<AvailabilitySlotClientModel>;
     playerPositions: Array<PlayerPositionClientModel>
+}
+
+export interface ActivationsCountClientModel {
+    playerId: string;
+    playerName: string;
+    playerColor: PlayerColor;
+    activationsCount: number;
 }

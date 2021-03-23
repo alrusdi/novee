@@ -103,23 +103,3 @@ ul {
 .navigation-item--logout:before {
     background: url(/assets/img/icons/icon-cross.png) no-repeat;
 }
-
-.topmost-anonymous {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 700px;
-}
-
-.anonymous-message {
-    max-width: 300px;
-    text-align: center;
-    background: #ffe3e3;
-    padding: 10px 40px;
-    margin-bottom: 20px;
-}
-
-.anonymous-message a {
-    text-decoration: underline;
-    font-weight: bold;
-    color: #050;
-}

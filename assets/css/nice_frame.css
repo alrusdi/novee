@@ -1,0 +1,41 @@
+.nice-frame {
+    display: inline-block;
+    vertical-align: top;
+    min-height: 600px;
+    width: 493px;
+}
+
+.nice-frame-title {
+    text-align: center;
+    color: #2b2929;
+    font-size: 32px;
+    font-weight: bold;
+    width: 161px;
+    display: inline-block;
+    filter: drop-shadow(0 0 2px #FFFFFFA1);
+    position: absolute;
+    margin: -106px 0 0 -91px;
+}
+
+.nice-frame-wrapper {
+    background: url(/assets/img/bg_fill.png) repeat-y;
+    width: 507px;
+    margin: 140px 0 0 0;
+}
+
+.nice-frame-wrapper:before {
+    background: url(/assets/img/bg_top.png) no-repeat;
+    width: 493px;
+    height: 149px;
+    position: absolute;
+    margin: -148px 0 0 -253px;
+    content: "";
+}
+
+.nice-frame-bottom {
+    background: url(/assets/img/bg_bottom.png) no-repeat;
+    width: 493px;
+    height: 78px;
+    display: inline-block;
+    margin-top: -35px;
+}

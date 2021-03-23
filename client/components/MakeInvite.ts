@@ -3,6 +3,7 @@ import { makeFetchOptions } from '../Utils';
 import { Seat } from './Seat';
 import { SeatConfirmation } from './SeatConfirmation';
 import { Button } from './Button';
+import { NiceFrame } from './NiceFrame';
 import { InvitationState } from '../../server/game/Const';
 
 export const MakeInvite = defineComponent({
@@ -33,7 +34,8 @@ export const MakeInvite = defineComponent({
     components: {
         Seat,
         SeatConfirmation,
-        Button
+        Button,
+        NiceFrame
     },
     methods: {
         refreshInvite(inviteId: string) {
@@ -122,8 +124,8 @@ export const MakeInvite = defineComponent({
     },
     template: `
     <div class="make-invite">
-        <div class="invite-wrapper">
-            <label class="invite-title">Invite</label>
+        <NiceFrame title="Invite">
+        <div class="make-invite-content">
             <template v-if="isLoading">
                 <div class="loading">Loading...</div>
             </template>
@@ -147,6 +149,7 @@ export const MakeInvite = defineComponent({
                 </div>
             </template>
         </div>
+        </NiceFrame>
     </div>
     `
 });

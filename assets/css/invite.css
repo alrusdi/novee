@@ -2,26 +2,7 @@
 .make-invite {
     margin: 0 auto;
     max-width: 600px;
-}
-
-.invite-title {
     text-align: center;
-    color: #2b2929;
-    font-size: 32px;
-    font-weight: bold;
-    width: 507px;
-    display: inline-block;
-    filter: drop-shadow(0 0 2px #FFFFFFA1);
-    position: absolute;
-    margin: -104px 0 0 -9px;
-}
-
-.invite-wrapper {
-    background: url(/assets/img/invite_bg.png) no-repeat;
-    width: 507px;
-    margin: 0 0 0 47px;
-    height: 646px;
-    padding: 148px 0 0 0;
 }
 
 .invite-refreshing {
@@ -37,7 +18,7 @@
 }
 
 .invite-start-game {
-    margin: -12px 0 0 139px
+    margin: -10px 0 0 -20px;
 }
 
 .seats {

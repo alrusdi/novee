@@ -23,6 +23,7 @@ export const Game = defineComponent({
             tileset: [],
             playerColor: "",
             you: undefined,
+            canRefreshTiles: false,
             activePlayer: undefined,
             isYourTurn: false,
             isSolo: false,
@@ -83,9 +84,10 @@ export const Game = defineComponent({
 
             this.selectedTileId = '';
             this.isLoading = false;
+            this.canRefreshTiles = this.isYourTurn && gameInfo.data.canRefreshTiles;
 
             if ( ! this.isYourTurn) {
-                setTimeout(() => this.updateGame(), 2000);
+                setTimeout(() => this.updateGame(), 5000);
             }
         },
         isPlaceSelectable(tile: any) {
@@ -124,6 +126,14 @@ export const Game = defineComponent({
             } else {
                 return 'Add selected tile to you tileset';
             }
+        },
+        refreshTiles() {
+            if ( ! this.canRefreshTiles) return;
+            const url = '/api/games/refresh-tiles/' + this.you.id;
+            fetch(url)
+                .then((response) => response.json())
+                .then((res) => this.onGameReady(res))
+                .catch((_) => alert('Can\'t refresh tiles'));
         }
     },
     components: {
@@ -151,9 +161,9 @@ export const Game = defineComponent({
                     </template>
                     <div class="game-stats-container">
                         <template v-if="isSolo">
-                            <p>Solo stage: {{ soloStage }}</p>
-                            <p>Solo score: {{ soloScore }}</p>
-                            <p><div class="game-activations-counter tile-activated" :class="'tile-activated--'+playerColor"></div> {{ soloActivations }} / {{ soloMaxActivations }}</p>
+                            <p>Stage: {{ soloStage }} / 2</p>
+                            <p>Current score: {{ soloScore }}</p>
+                            <p><div class="game-activations-counter tile-activated" :class="'tile-activated--'+you.color">✔</div> {{ soloActivations }} / {{ soloMaxActivations }}</p>
                         </template>
                         <template v-else>
                             <PlayerPositions :activationsCount="activationsCount" :playerPositions="playerPositions" />
@@ -164,10 +174,13 @@ export const Game = defineComponent({
                                         <div class="games-message">
                                             {{ getYourMessage() }}
                                         </div>
+                                        <div class="games-message" v-if="canRefreshTiles">
+                                            Also, you can <a class="game-refresh-tiles" href="#" v-on:click.prevent="refreshTiles()">refresh the tiles</a>
+                                        </div>
                                     </template>
                                     <template v-else>
                                         <div class="games-message">
-                                            Please wait till <em class="game-player-name">{{ activePlayer.name }}</em> finishes his/her turn.
+                                            Please wait till <em :class="'game-player-name player-color--' + activePlayer.color">{{ activePlayer.name }}</em> finishes his/her turn.
                                         </div>
                                     </template>
                                 </div>

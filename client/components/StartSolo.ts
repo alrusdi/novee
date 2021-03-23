@@ -37,13 +37,12 @@ export const StartSolo = defineComponent({
             </div>
             <div class="start-solo-rules">
                 <p>
-                Solo game consists of 2 stages. On the first stage your goal is to activate 
-                8 tiles using as <strong>least</strong> moves as posible.
+                The solo game consists of 2 phases.
+                During the first phase your goal is to activate 8 tiles using as <strong>few moves</strong> as possible.
                 </p>
                 <p>
-                The same goal is for second stage, but you need to activate 13 tiles.
+                The goal is the same for the second phase, but you will need to use up all remaining activations.
                 </p>
-
             </div>
         </div>
     </div>

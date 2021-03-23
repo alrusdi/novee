@@ -94,6 +94,10 @@ export class Game {
         return this.players.length < 2;
     }
 
+    outOfTiles(): boolean {
+        return this.board.countRemainingTiles() === 0;
+    }
+
     startPlayerTileset(player: Player, tile: Tile) {
         player.rootTile = tile;
         if (this.isSolo()) {
@@ -111,6 +115,7 @@ export class Game {
         targetTile.attachAnotherTile(newTile, side);
         this.board.advancePlayerPosition(player.id, newTile.cost);
 
+        if (this.outOfTiles() && ! this.isSolo()) this.board.refreshTiles();
 
         this.finishTurn(player);
     }
@@ -135,10 +140,12 @@ export class Game {
     }
 
     isRoundOver(): boolean {
+        if (this.outOfTiles()) return true;
         return this.playersMadeTurnThisRound.length === this.players.length
     }
 
     isGameOver(): boolean {
+        if (this.outOfTiles()) return true;
         for (let p of this.players) {
             if (p.getActivationsCount() === MAX_ACTIVE_TILES) return true;
         }
@@ -164,11 +171,11 @@ export class Game {
                 if (this.soloStage === 1) {
                     this.soloScore += (SOLO_GAME_FIRST_STAGE_ACTIVATIONS_COUNT - activationsCount) * 10;
                     this.soloStage = 2;
+                    this.board.refreshTiles();
                 } else {
                     this.soloScore += (MAX_ACTIVE_TILES - activationsCount) * 10;
                     return this.finishGame();
                 }
-                this.board.refreshTiles(true);
             }
         }
 

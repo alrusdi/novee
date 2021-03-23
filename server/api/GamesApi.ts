@@ -53,4 +53,18 @@ export class GamesApi extends BaseApi {
                 )
             })
     }
+
+    refreshTiles(playerId: string) {
+        return GamesApiActions.startNewAction(this.accountId)
+            .loadGameDataByPlayerId(playerId)
+            .checkIfItIsYourTurn()
+            .checkIfYouCanRefreshTiles()
+            .refreshTiles()
+            .onComplete((res: GamesApiActions) => {
+                return this.success(
+                    'Tiles refreshed successfully',
+                    gameDataToApi(res.game(), res.player(), this.accountId)
+                )
+            })
+    }
 }

@@ -29,11 +29,11 @@ describe('Invite', function() {
 
         const seat = invite.takeSeat(seats[0].id, "100", PlayerColor.Orange);
         expect(seat?.accountId).to.eq("100");
-        expect(seat?.color).to.eq(PlayerColor.Orange);
+        expect(seat?.color).to.eq(PlayerColor.Olive);
 
-        const seat2 = invite.takeSeat(seats[1].id,"200", PlayerColor.Orange);
+        const seat2 = invite.takeSeat(seats[1].id, "200", PlayerColor.Orange);
         expect(seat2?.accountId).to.eq("200");
-        expect(seat2?.color).not.to.eq(PlayerColor.Orange);
+        expect(seat2?.color).not.to.eq(PlayerColor.Olive);
     });
 
     it('does not accept new players if all places are taken', function() {

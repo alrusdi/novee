@@ -70,6 +70,20 @@ export class GamesApiActions {
         return this
     }
 
+    checkIfYouCanRefreshTiles(): GamesApiActions {
+        if (this.isStopped) return this;
+
+        if (this.game().isSolo()) {
+            return this.error('You can\'t refresh tiles in solo mode', {})
+        }
+
+        if (this.game().board.getAvailableTiles().length > 2) {
+            return this.error('Count of remaining tiles on the board must be less than 3', {})
+        }
+
+        return this;
+    }
+
     checkIfItIsYourTurn(): GamesApiActions {
         if (this.isStopped) return this;
 
@@ -82,10 +96,23 @@ export class GamesApiActions {
 
     checkIfGameIsAvailableForThisUser(): GamesApiActions {
         if (this.isStopped) return this;
+
         if (GameManager.doesGameBelongsToAccount(this.game().id, this.accountId)) {
             return this;
         }
+
         return this.error('Wrong game', {gameId: this.game().id})
+    }
+
+
+    refreshTiles(): GamesApiActions {
+        if (this.isStopped) return this;
+
+        if ( ! this.game().board.refreshTiles()) {
+            return this.error('Can\t refresh tiles', {})
+        }
+
+        return this;
     }
 
     placeRootTileIfNeeded(newTileId: string, targetTileId: string): GamesApiActions {

@@ -74,26 +74,19 @@ export class Board {
         return this.tiles.filter((t) => t !== undefined).length
     }
 
-    refreshTiles(soloMode: boolean = false): boolean {
-        if (this.getAvailableTiles().length > 2 && ! soloMode) return false;
+    canRefreshTiles() {
+        const isSoloMode = this.playerPositions.length === 1;
+        const tilesCount = this.tiles.length;
+        if (tilesCount === 0) return true;
+        if (this.getAvailableTiles().length < 3 && ! isSoloMode) return true;
+        return false;
+    }
 
-        var tile: Tile | undefined;
-        if (soloMode) {
-            for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
-                if (this.tiles[i] === undefined) {
-                    tile = this.tileDealer.deal();
-                    this.tiles[i] = tile;
-                }
-            }
-        } else {
-            for (tile of this.tiles) {
-                if (tile) this.tileDealer.discard(tile);
-            }
-            this.tiles = [];
-
-            for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
-                tile = this.tileDealer.deal();
-                this.tiles.push(tile);
+    refreshTiles(): boolean {
+        for (let i = 0; i <= MAX_AVAILABILITY_MARKER_POSITION; i++) {
+            if (this.tiles[i] === undefined) {
+                const tile = this.tileDealer.deal();
+                this.tiles[i] = tile;
             }
         }
         return true

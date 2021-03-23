@@ -7,6 +7,12 @@ export const SeatConfirmation = defineComponent({
         confirmSeat() {
             if (this.seat.isConfirmed) return;
             this.$emit('onConfirmSeat', this.seat)
+        },
+        getDisabledButtonText() {
+            if (this.seat.isConfirmed) return 'Ready!';
+            if (this.seat.isConfirmed && ! this.disabled) return 'Wait others';
+            if (this.disabled) return 'Not confirmed';
+            return '';
         }
     },
     components: {
@@ -23,8 +29,7 @@ export const SeatConfirmation = defineComponent({
         <div class="seat-pending" v-else"></div>
         <div class="seat-claim-button">
             <Button v-if="seat.isConfirmed || disabled" :isDisabled="true">
-                <template v-if="seat.isConfirmed && ! disabled">Wait others...</template>
-                <template v-if="seat.disabled">Not confirmed yet...</template>
+                {{ getDisabledButtonText() }}
             </Button>
             <Button v-else color="green" :onClick="confirmSeat">Ready!</Button>
         </div>

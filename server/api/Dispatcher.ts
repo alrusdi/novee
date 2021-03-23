@@ -87,6 +87,15 @@ export class Dispatcher {
                     args: [playerId, newTileId, targetTileId, side]
                 }
             }
+
+            if (apiMethod === 'refresh-tiles') {
+                const playerId = urlParts[2];
+                return {
+                    instance: instance,
+                    method: instance.refreshTiles,
+                    args: [playerId]
+                }
+            }
         }
 
         const instance = new ErrorApi();

@@ -27,6 +27,7 @@ export function gameDataToApi(game: Game, player: Player, accountId: string) {
         activationsCount: activationsCountToApi(game),
         player: playerToApi(player),
         yourPlayerId: curPlayer === undefined ? '' : curPlayer.id,
+        canRefreshTiles: game.board.canRefreshTiles(),
         activePlayerId: game.getActivePlayer().id,
         isSolo: game.isSolo(),
         soloStage: game.soloStage,

@@ -25,8 +25,18 @@
     color: #222;
 }
 
+.player-color--pink
+{
+    color: pink;
+}
+
 .player-activation--pink {
     background: pink;
+}
+
+.player-color--olive
+{
+    color: olive;
 }
 
 .player-activation--olive {
